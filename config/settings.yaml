@@ -1,0 +1,28 @@
+
+project:
+  name: yottaflex-forecast
+  seed: 20261022
+
+data_generation:
+  sku_count: 50
+  store_count: 5
+  supplier_count: 10
+  days: 90
+  start_date: "2026-01-01"
+
+database:
+  type: duckdb
+  path: data/yottaflex.duckdb
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  ground_truth: data/ground_truth
+
+forecast:
+  horizon_days: 14
+  test_days: 14
+
+replenishment:
+  service_level: 0.95
+  review_period_days: 7

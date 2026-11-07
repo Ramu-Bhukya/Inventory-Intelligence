@@ -1,0 +1,64 @@
+
+entity,field,data_type,required,description
+SKU,sku_id,VARCHAR,YES,Unique SKU identifier
+SKU,sku_name,VARCHAR,YES,Product name
+SKU,category,VARCHAR,YES,Product category
+SKU,unit_price,DECIMAL,YES,Selling price
+SKU,launch_date,DATE,YES,Product launch date
+SKU,status,VARCHAR,YES,ACTIVE or DISCONTINUED
+Store,store_id,VARCHAR,YES,Unique store identifier
+Store,store_name,VARCHAR,YES,Store name
+Store,region,VARCHAR,YES,Store region
+Store,capacity_units,INTEGER,YES,Store inventory capacity
+Store,status,VARCHAR,YES,ACTIVE or INACTIVE
+Supplier,supplier_id,VARCHAR,YES,Unique supplier identifier
+Supplier,supplier_name,VARCHAR,YES,Supplier name
+Supplier,lead_time_mean_days,DOUBLE,YES,Average supplier lead time
+Supplier,lead_time_std_days,DOUBLE,YES,Lead time variability
+Supplier,status,VARCHAR,YES,Supplier lifecycle status
+SupplierSKU,supplier_sku_id,VARCHAR,YES,Unique supplier-SKU relationship
+SupplierSKU,supplier_id,VARCHAR,YES,References Supplier
+SupplierSKU,sku_id,VARCHAR,YES,References SKU
+SupplierSKU,pack_size,INTEGER,YES,Supplier pack quantity
+SupplierSKU,minimum_order_qty,INTEGER,YES,Minimum order quantity
+SupplierSKU,unit_cost,DECIMAL,YES,Supplier unit cost
+SalesHistory,sale_id,VARCHAR,YES,Unique sales record
+SalesHistory,store_id,VARCHAR,YES,References Store
+SalesHistory,sku_id,VARCHAR,YES,References SKU
+SalesHistory,sale_date,DATE,YES,Sales transaction date
+SalesHistory,units_sold,INTEGER,YES,Observed units sold
+SalesHistory,promotion_flag,BOOLEAN,YES,Promotion indicator
+SalesHistory,stockout_flag,BOOLEAN,YES,Stockout indicator
+InventorySnapshot,snapshot_id,VARCHAR,YES,Unique snapshot
+InventorySnapshot,store_id,VARCHAR,YES,References Store
+InventorySnapshot,sku_id,VARCHAR,YES,References SKU
+InventorySnapshot,snapshot_date,DATE,YES,Inventory snapshot date
+InventorySnapshot,on_hand_units,INTEGER,YES,Available inventory
+InventorySnapshot,on_order_units,INTEGER,YES,Incoming inventory
+LeadTimeObservation,observation_id,VARCHAR,YES,Unique lead-time record
+LeadTimeObservation,supplier_sku_id,VARCHAR,YES,References SupplierSKU
+LeadTimeObservation,order_date,DATE,YES,Supplier order date
+LeadTimeObservation,receipt_date,DATE,YES,Supplier receipt date
+LeadTimeObservation,actual_lead_time_days,INTEGER,YES,Observed lead time
+Forecast,forecast_id,VARCHAR,YES,Unique forecast
+Forecast,store_id,VARCHAR,YES,References Store
+Forecast,sku_id,VARCHAR,YES,References SKU
+Forecast,forecast_date,DATE,YES,Forecast creation date
+Forecast,forecast_horizon_days,INTEGER,YES,Prediction horizon
+Forecast,predicted_demand,DOUBLE,YES,Forecast demand units
+Forecast,model_name,VARCHAR,YES,Forecast model identifier
+ReorderPolicy,policy_id,VARCHAR,YES,Unique policy
+ReorderPolicy,store_id,VARCHAR,YES,References Store
+ReorderPolicy,sku_id,VARCHAR,YES,References SKU
+ReorderPolicy,service_level,DOUBLE,YES,Target service level
+ReorderPolicy,safety_stock_units,INTEGER,YES,Safety stock quantity
+ReorderPolicy,reorder_point_units,INTEGER,YES,Reorder threshold
+PurchaseRecommendation,recommendation_id,VARCHAR,YES,Unique recommendation
+PurchaseRecommendation,store_id,VARCHAR,YES,References Store
+PurchaseRecommendation,sku_id,VARCHAR,YES,References SKU
+PurchaseRecommendation,forecast_id,VARCHAR,YES,References Forecast
+PurchaseRecommendation,policy_id,VARCHAR,YES,References ReorderPolicy
+PurchaseRecommendation,recommendation_date,DATE,YES,Recommendation date
+PurchaseRecommendation,recommended_qty,INTEGER,YES,Recommended order quantity
+PurchaseRecommendation,status,VARCHAR,YES,Recommendation status
+PurchaseRecommendation,reason,VARCHAR,NO,Decision explanation

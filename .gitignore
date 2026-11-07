@@ -1,0 +1,32 @@
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+.env.*
+
+# Local database
+*.duckdb
+*.duckdb.wal
+
+# Generated data and outputs
+data/raw/
+data/processed/
+data/ground_truth/
+outputs/forecasts/
+outputs/recommendations/
+outputs/reports/
+
+# Backups
+backups/
+
+# Logs
+*.log

@@ -1,0 +1,17 @@
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+
+
+# (.venv) ) (base) Solves-MacBook-Pro:yottaflex-forecast solveyoursystem$ ls -l /Applications/Docker.app/Contents/Resources/bin/docker
+# -rwxr-xr-x@ 1 solveyoursystem  admin  66102416 Aug  3  2023 /Applications/Docker.app/Contents/Resources/bin/docker
+# ((.venv) ) (base) Solves-MacBook-Pro:yottaflex-forecast solveyoursystem$ export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+# ((.venv) ) (base) Solves-MacBook-Pro:yottaflex-forecast solveyoursystem$ docker --version
+# Docker version 24.0.5, build ced0996
+# ((.venv) ) (base) Solves-MacBook-Pro:yottaflex-forecast solveyoursystem$ 
